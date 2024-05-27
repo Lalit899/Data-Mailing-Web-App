@@ -3,24 +3,12 @@ import React, { useContext, useEffect } from 'react'
 import { States } from '../Context/Contextapi'
 import Removebtn from './Removebtn'
 import Checkbox from './Checkbox'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Updatebtn from './Updatebtn'
 
 function Table() {
     const formdata = useContext(States)
     const mainstack = formdata.mainstack
     const ids = formdata.ids
-
-    const notify2 = () => toast.error('Data deleted !', {
-        position: "bottom-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        });
 
     const fetchdata = () => {
         try {
@@ -71,14 +59,14 @@ function Table() {
                     {data.hobbies}
                 </td>
                 <td className="px-1 py-4 text-center">
-                    <Removebtn id={data._id} click={notify2}/>
+                    <Removebtn id={data._id}/>
+                    <Updatebtn id={data._id}/>
                 </td>
             </tr>)})
     }
 
   return (
     <>
-    <ToastContainer />
     <div className='flex justify-center mt-5'>
         <div className="relative overflow-x-auto w-full shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

@@ -1,14 +1,14 @@
 "use client"
 import React from 'react'
 
-function Removebtn({id,click}) {
+function Removebtn({id}) {
     const handledelete = async() => {
     const confirmed = confirm("Deleting data");
+
     if(confirmed) {
         await fetch(`/api/formdata?id=${id}`, {
             method: "DELETE"
         });
-        click()
     }
     };
   return (
